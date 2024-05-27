@@ -19,6 +19,7 @@ import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
+  await prisma.session.findFirst();
 
   return null;
 };
